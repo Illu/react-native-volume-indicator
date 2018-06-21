@@ -1,12 +1,12 @@
 
 #import "RNVolumeIndicator.h"
-#import <LocalAuthentication/LocalAuthentication.h>
 #import <MediaPlayer/MPVolumeView.h>
 #import <UIKit/UIView.h>
 #import <UIKit/UIAlertView.h>
 
 
 @implementation RNVolumeIndicator
+@synthesize onVolumeChangeNotification;
 
 - (dispatch_queue_t)methodQueue
 {
@@ -22,24 +22,37 @@
     //    [self.view addSubview: volumeView];
     //    [volumeView release];
     
+    
+    // enables volume listener
+    //    [[NSNotificationCenter defaultCenter]
+    //     addObserver:self
+    //     selector:@selector(volumeChanged:)
+    //     name:@"AVSystemController_SystemVolumeDidChangeNotification"
+    //     object:nil];
+    //
+    //    MPMusicPlayerController *musicPlayer = [MPMusicPlayerController applicationMusicPlayer];
+    
     return dispatch_get_main_queue();
 }
 
 
 RCT_EXPORT_MODULE()
 
-RCT_EXPORT_METHOD(isAvailable:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
-{
-    //    UIView *myBox  = [[UIView alloc] initWithFrame:CGRectMake(180, 35, 10, 10)];
-    //    myBox.backgroundColor = [UIColor lightGrayColor];
-    //    [self.view addSubview:myBox];
+
+- (NSArray<NSString *> *)supportedEvents {
+    return @[@"onVolumeChange"];
+}
+
+
+RCT_EXPORT_METHOD(getVolume:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject){
+
+    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+    CGFloat volume = audioSession.outputVolume;
+    resolve(@(volume));
     
-    LAContext *context = [[LAContext alloc] init];
-    if ([context canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:NULL]) {
-        resolve(@(YES));
-    } else {
-        resolve(@(NO));
-    }
+    // Old
+    //    MPMusicPlayerController *musicPlayer = [MPMusicPlayerController applicationMusicPlayer];
+    //    resolve(@(musicPlayer.volume));
 }
 
 @end

@@ -1,6 +1,8 @@
 
 # react-native-volume-indicator
 
+[![MIT License][license-badge]][license-url]
+
 __WORK IN PROGRESS__ 
 
 Replaces the default iOS volume popup by a less-obtrusive indicator.
@@ -31,3 +33,6 @@ import RNVolumeIndicator from 'react-native-volume-indicator';
   
 ## Licence ##
 **MIT**
+
+[license-badge]: http://img.shields.io/badge/license-MIT-blue.svg?style=flat
+[license-url]: LICENSE
