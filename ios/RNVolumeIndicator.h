@@ -3,6 +3,7 @@
 #import "RCTBridgeModule.h"
 #else
 #import <React/RCTBridgeModule.h>
+#import <React/RCTEventEmitter.h>
 #endif
 
 #import <AVFoundation/AVAudioSession.h>
@@ -10,9 +11,10 @@
 #import <MediaPlayer/MediaPlayer.h>
 
 
-@interface RNVolumeIndicator : NSObject <RCTBridgeModule>
+@interface RNVolumeIndicator : RCTEventEmitter <RCTBridgeModule>
 @property (nonatomic) BOOL onVolumeChangeNotification;
 
+-(float)getVolume;
 
 @end
   

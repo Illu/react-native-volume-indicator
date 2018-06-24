@@ -7,7 +7,7 @@ __WORK IN PROGRESS__
 
 Replaces the default iOS volume popup by a less-obtrusive indicator.
 
-## Getting started
+## Installation
 
 Note: only iOS is supported at the moment.
 
@@ -25,6 +25,10 @@ Note: only iOS is supported at the moment.
 4. Run your project
 
 ## Usage
+
+Please note that you'll only be able to get the actual volume
+using a physical device, as the simulator won't return a correct value.
+
 ```javascript
 import RNVolumeIndicator from 'react-native-volume-indicator';
 
