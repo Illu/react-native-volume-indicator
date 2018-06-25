@@ -31,6 +31,10 @@ export default class VolumeIndicator extends Component {
   };
 
   componentDidMount() {
+    getVolume().then(volume => {
+      this.setState({ volume });
+      this._AnimateChange(volume, true);
+    });
     listenToVolumeChange(this._onVolumeChange);
   };
 
@@ -43,13 +47,13 @@ export default class VolumeIndicator extends Component {
     this._AnimateChange(volume);
   };
 
-  _AnimateChange = (volume) => {
+  _AnimateChange = (volume, instant = false) => {
     const { widthAnim } = this.state;
     Animated.timing(
       widthAnim,
       {
         toValue: SCREEN_WIDTH * volume,
-        duration: 150,
+        duration: instant ? 0 : 150,
       }
     ).start();
   };

@@ -33,6 +33,8 @@ using a physical device, as the simulator won't return a correct value.
 ### VolumeIndicator
 
 Component that displays a volume indicator.
+By default, it looks like a blue slider that fills up 
+left to right depending on the current volume.
 
 ##### Exemple
 ```javascript
