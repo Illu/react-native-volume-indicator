@@ -6,7 +6,7 @@
 __WORK IN PROGRESS__ 
 
 Replaces the default iOS volume popup by a less-obtrusive indicator.
-Contains helpers to get access to your app's audio volume.
+Contains helpers to get access and subscribe to your app's audio volume.
 
 ## Installation
 
@@ -32,7 +32,18 @@ using a physical device, as the simulator won't return a correct value.
 
 ### VolumeIndicator
 
-_TODO_
+Component that displays a volume indicator.
+
+##### Exemple
+```javascript
+import VolumeIndicator from 'react-native-volume-indicator';
+
+class App extends React.Component {
+  render() {
+    <VolumeIndicator />
+  };
+}
+```
 
 ### getVolume()
 
@@ -56,7 +67,7 @@ class App extends React.Component {
 ### listenToVolumeChange(callback) / stopListeningToVolumeChange()
 
 Use `listenToVolumeChange` when you want to start listening to volume change.
-Don't forget to remove the listener by calling `stopListeningToVolumeChange()`
+Don't forget to remove the listener by calling `stopListeningToVolumeChange()`.
 
 ##### Exemple
 ```javascript
@@ -72,7 +83,7 @@ class App extends React.Component {
     stopListeningToVolumeChange();
   }
   
-  _onVolumeChange(volume) {
+  _onVolumeChange = (volume) => {
     // ...
   }
 }

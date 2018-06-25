@@ -12,6 +12,7 @@
   "author": "Maxime Nory",
   "license": "MIT",
   "peerDependencies": {
+    "react": "*",
     "react-native": "^0.41.2"
   }
 }

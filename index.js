@@ -1,5 +1,5 @@
-
-import { NativeModules, NativeEventEmitter } from 'react-native';
+import { NativeModules, NativeEventEmitter, View, StyleSheet, Dimensions, Animated } from 'react-native';
+import React, {Component} from 'react';
 
 const { RNVolumeIndicator } = NativeModules;
 
@@ -18,4 +18,63 @@ export const stopListeningToVolumeChange = () => {
 
 export const getVolume = () => RNVolumeIndicator.getVolume();
 
-export default RNVolumeIndicator;
+
+// Actual Volume indicator component
+export default class VolumeIndicator extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      volume: 0,
+      widthAnim: new Animated.Value(0),
+    };
+  };
+
+  componentDidMount() {
+    listenToVolumeChange(this._onVolumeChange);
+  };
+
+  componentWillUnmount() {
+    stopListeningToVolumeChange();
+  };
+
+  _onVolumeChange = (volume) => {
+    this.setState({ volume });
+    this._AnimateChange(volume);
+  };
+
+  _AnimateChange = (volume) => {
+    const { widthAnim } = this.state;
+    Animated.timing(
+      widthAnim,
+      {
+        toValue: SCREEN_WIDTH * volume,
+        duration: 150,
+      }
+    ).start();
+  };
+
+  render() {
+    const { widthAnim } = this.state;
+    return (
+      <View style={styles.container}>
+        <Animated.View style={[styles.volumeIndicator, {width: widthAnim} ]} />
+      </View>
+    );
+  }
+}
+
+// Styles
+
+const SCREEN_WIDTH = Dimensions.get('window').width;
+const styles = StyleSheet.create({
+  container: {
+    width: SCREEN_WIDTH,
+    height: 5,
+    backgroundColor: 'transparent',
+  },
+  volumeIndicator: {
+    height: 5,
+    backgroundColor: "#0084b4",
+  },
+});
