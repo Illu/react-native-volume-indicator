@@ -1,5 +1,7 @@
-
-# react-native-volume-indicator
+<h1 align="center">
+  <img src="./logo.png"/><br>
+  react-native-volume-indicator
+</h1>
 
 [![MIT License][license-badge]][license-url]
 
@@ -10,7 +12,7 @@ Includes helpers to get access and subscribe to your app's audio volume.
 
 ## Installation
 
-Note: only iOS is supported at the moment.
+>⚠️ Only iOS is supported at the moment.
 
 ### Mostly automatic installation
 
@@ -27,14 +29,14 @@ Note: only iOS is supported at the moment.
 
 ## Usage
 
-Please note that you'll only be able to get the actual volume
-using a physical device, as the simulator won't return a correct value.
+>⚠️ Please note that you'll only be able to get the actual volume
+using a physical device.
 
 ### VolumeIndicator
 
 Component that displays a volume indicator.
 By default, it looks like a blue slider that fills up 
-left to right depending on the current volume.
+from left to right depending on the current volume.
 
 ##### Exemple
 ```javascript
@@ -94,7 +96,9 @@ class App extends React.Component {
 ```
   
 ## Licence ##
-**MIT**
+MIT License
+
+See [LICENSE](LICENSE)
 
 [license-badge]: http://img.shields.io/badge/license-MIT-blue.svg?style=flat
 [license-url]: LICENSE

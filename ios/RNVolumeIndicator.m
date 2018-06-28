@@ -11,6 +11,7 @@
 {
     AVAudioSession* audioSession = [AVAudioSession sharedInstance];
     
+    // Disables the default (iOS) volume pop up
     [self disableStockIndicator];
     
     [audioSession setActive:YES error:nil];
@@ -22,6 +23,7 @@
     return dispatch_get_main_queue();
 }
 
+// getVolume() called from the js thread
 RCT_EXPORT_METHOD(getVolume:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject){
     AVAudioSession *audioSession = [AVAudioSession sharedInstance];
     CGFloat volume = audioSession.outputVolume;
@@ -34,7 +36,7 @@ RCT_EXPORT_METHOD(getVolume:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromise
 
 RCT_EXPORT_MODULE();
 
-
+// Observer for volume change
 -(void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([keyPath isEqual:@"outputVolume"]) {
         float volume = [self getVolume];

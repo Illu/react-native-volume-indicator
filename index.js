@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 
 const { RNVolumeIndicator } = NativeModules;
 
+const SCREEN_WIDTH = Dimensions.get('window').width;
 const volumeManagerEmitter = new NativeEventEmitter(RNVolumeIndicator);
 
 // Subscription to volume changes
@@ -17,7 +18,6 @@ export const stopListeningToVolumeChange = () => {
 };
 
 export const getVolume = () => RNVolumeIndicator.getVolume();
-
 
 // Actual Volume indicator component
 export default class VolumeIndicator extends Component {
@@ -70,7 +70,6 @@ export default class VolumeIndicator extends Component {
 
 // Styles
 
-const SCREEN_WIDTH = Dimensions.get('window').width;
 const styles = StyleSheet.create({
   container: {
     width: SCREEN_WIDTH,
