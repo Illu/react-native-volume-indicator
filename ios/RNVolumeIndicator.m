@@ -11,6 +11,8 @@
 {
     AVAudioSession* audioSession = [AVAudioSession sharedInstance];
     
+    [self disableStockIndicator];
+    
     [audioSession setActive:YES error:nil];
     [audioSession addObserver:self
                    forKeyPath:@"outputVolume"
@@ -44,6 +46,19 @@ RCT_EXPORT_MODULE();
     AVAudioSession *audioSession = [AVAudioSession sharedInstance];
     CGFloat volume = audioSession.outputVolume;
     return volume;
+}
+
+
+-(void) disableStockIndicator{
+    MPVolumeView *volumeView = [[MPVolumeView alloc] initWithFrame:CGRectMake(-2000., -2000., 0.f, 0.f)];
+    NSArray *windows = [UIApplication sharedApplication].windows;
+    
+    volumeView.alpha = 0.1f;
+    volumeView.userInteractionEnabled = NO;
+    
+    if (windows.count > 0) {
+        [[windows objectAtIndex:0] addSubview:volumeView];
+    }
 }
 
 @end
