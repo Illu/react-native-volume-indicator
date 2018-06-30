@@ -3,12 +3,19 @@
   react-native-volume-indicator
 </h1>
 
+![platforms](https://img.shields.io/badge/platform-iOS-brightgreen.svg?style=flat&colorB=191A17)
 [![MIT License][license-badge]][license-url]
+[![npm](https://img.shields.io/npm/v/react-native-volume-indicator.svg?style=flat
+)](https://www.npmjs.com/package/react-native-volume-indicator)
 
-__WORK IN PROGRESS__ 
+## tl;dr
 
 Replaces the default iOS volume popup by a less-obtrusive indicator.
 Includes helpers to get access and subscribe to your app's audio volume.
+
+## Getting started
+
+`$ npm install react-native-volume-indicator --save`
 
 ## Installation
 
