@@ -59,9 +59,10 @@ export default class VolumeIndicator extends Component {
   };
 
   render() {
+    const { style, layout } = this.props;
     const { widthAnim } = this.state;
     return (
-      <View style={styles.container}>
+      <View style={[style, styles.container]}>
         <Animated.View style={[styles.volumeIndicator, {width: widthAnim} ]} />
       </View>
     );
