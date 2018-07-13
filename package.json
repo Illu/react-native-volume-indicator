@@ -9,6 +9,10 @@
   "keywords": [
     "react-native"
   ],
+  "repository": {
+    "type": "git",
+    "url": "github.com/illu/react-native-volume-indicator"
+  },
   "author": "Maxime Nory",
   "license": "MIT",
   "peerDependencies": {
