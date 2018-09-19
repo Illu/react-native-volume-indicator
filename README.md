@@ -101,6 +101,21 @@ class App extends React.Component {
   }
 }
 ```
+
+## Built-in layouts
+
+If you don't want to make your own, we provide a set of two layouts 
+to choose from.
+
+To use them, set the `layout` prop to either `default` or `dark-vertical`.
+
+```javascript
+<VolumeIndicator layout="default" />
+```
+
+If you want, you can use the `style` prop to customize the look
+of any volume indicator.
+
   
 ## Licence ##
 MIT License
