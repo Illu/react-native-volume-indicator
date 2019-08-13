@@ -1,6 +1,6 @@
-<p align="center">
-  <img src="./logo.png"/><br>
-</p>
+<h1 align="center">
+  <img src="logo.png"/><br>
+</h1>
 
 ![platforms](https://img.shields.io/badge/platform-iOS-brightgreen.svg?style=flat&colorB=191A17)
 [![MIT License][license-badge]][license-url]
